@@ -20,6 +20,17 @@ class ProductsController extends AbstractApiController
         $this->em = $em;
     }
 
+    #[Route('/api/v1', name: 'apiHome')]
+    public function index(): Response
+    {
+        return $this->json([
+            'message' => 'CRUD API WITH SYMFONY #1',
+            'author' => 'bfabien99',
+            'email' => 'fabienbrou99@gmail.com',
+            'date' => 'Monday 25th July 2022 - 03:34 PM'
+        ]);
+    }
+
     #[Route('/api/v1/products', name: 'app_products', methods : ['GET'])]
     public function getProducts(): Response
     {
