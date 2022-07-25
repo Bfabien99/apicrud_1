@@ -21,7 +21,7 @@ class ProductsController extends AbstractApiController
     }
 
     #[Route('/api/v1/products', name: 'app_products', methods : ['GET'])]
-    public function index(): Response
+    public function getProducts(): Response
     {
         $products = $this->productsRepository->findAll();
         $length = count($products);
@@ -36,7 +36,7 @@ class ProductsController extends AbstractApiController
     }
 
     #[Route('/api/v1/product', name: 'app_create_product', methods : ['POST'])]
-    public function createProducts(Request $request): Response
+    public function createProduct(Request $request): Response
     {   
         $form = $this->buildForm(ProductType::class);
         $form->handleRequest($request);
@@ -83,7 +83,7 @@ class ProductsController extends AbstractApiController
     }
 
     #[Route('/api/v1/product/{id}', name: 'app_update_product', methods : ['POST'])]
-    public function updateProducts($id, Request $request): Response
+    public function updateProduct($id, Request $request): Response
     {   
         $product = $this->productsRepository->find($id);
         if(!$product){
